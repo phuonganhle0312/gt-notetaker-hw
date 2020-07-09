@@ -27,11 +27,8 @@ app.get("/notes", (req, res) => {
 
 // API/JSON
 // retrieve note data
-
-
-// module.exports = function (app) {
 app.get("/api/notes", function (req, res) {
-    fs.readFile("Develop/db/db.json", "utf8", (err, data) => {
+    fs.readFile("Develop/db/db.json", "utf-8", (err, data) => {
         if (err) {
             console.log("An error has occured reading your data.")
         }
@@ -42,7 +39,7 @@ app.get("/api/notes", function (req, res) {
 
 // post note data
 app.post("/api/notes", function (req, res) { // read and parse data from json
-    fs.readFile("Develop/db/db.json", "utf8", (err, data) => {
+    fs.readFile("Develop/db/db.json", "utf-8", (err, data) => {
         if (err) {
             console.log("An error has occured reading your data.")
         }
@@ -78,11 +75,7 @@ app.post("/api/notes", function (req, res) { // read and parse data from json
             res.json(toDelete);
         });
     });
-
-    
     });
-
-
     // listen on port
     app.listen(PORT, (req, res) => {
         console.log(`Currently running on http://localhost:${PORT}`);
