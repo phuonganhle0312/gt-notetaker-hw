@@ -17,7 +17,9 @@ This is a Note Taker application that retrieves information from users and input
 4. To see deployed site, go to heroku
 
 ## Usage
-[Deployed Portfolio Website]()
+[Deployed Portfolio Website Heroku](https://secure-journey-32958.herokuapp.com/)
+[Deployed Portfolio Website Github](https://phuonganhle0312.github.io/gt-notetaker-hw/)
+![Deployed Website](./Develop/public/assets/images/screenshot.png)
 
 ## Credits
 This application was designed by the curriculum team and provided to me.
