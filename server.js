@@ -32,8 +32,7 @@ app.get("/api/notes", function (req, res) {
         if (err) {
             console.log("An error has occured reading your data.")
         }
-    const notesData = JSON.parse(data);
-    res.json(notesData);
+    res.json(JSON.parse(data));
     });
 });
 
@@ -42,10 +41,10 @@ app.post("/api/notes", function (req, res) { // read and parse data from json
     fs.readFile("Develop/db/db.json", "utf-8", (err, data) => {
         if (err) {
             console.log("An error has occured reading your data.")
-        }
+        };
         const notesData = JSON.parse(data);
-        let note = req.body;
-        note.id = notesData.length + 1;
+        const note = { ...req.body, id: notesData.length};
+        notesData.push(note);
         fs.writeFile("Develop/db/db.json", JSON.stringify(notesData), "utf-8", (err) => {
             if (err) 
                 throw err;

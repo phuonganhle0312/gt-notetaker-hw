@@ -8,7 +8,7 @@ This is a Note Taker application that retrieves information from users and input
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
-* [MIT License](#mit_license)
+* [MIT License](#license)
 
 ## Installation
 1. Clone the repo 
