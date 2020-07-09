@@ -5,6 +5,7 @@ const path = require("path");
 // require fs
 const fs = require("fs");
 
+
 // create an instance of express
 const app = express();
 // add a port
@@ -42,9 +43,11 @@ app.post("/api/notes", function (req, res) { // read and parse data from json
         if (err) {
             console.log("An error has occured reading your data.")
         };
-        const notesData = JSON.parse(data);
+        const notesData = [];
+        notesData.push(JSON.parse(data));
         const note = { ...req.body, id: notesData.length};
         notesData.push(note);
+
         fs.writeFile("Develop/db/db.json", JSON.stringify(notesData), "utf-8", (err) => {
             if (err) 
                 throw err;
