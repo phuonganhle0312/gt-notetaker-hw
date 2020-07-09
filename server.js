@@ -21,7 +21,7 @@ const notesData = [];
 // GET requests
 // View / HTML
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Develop/public/index.html"));
+    res.sendFile(path.join(__dirname, "/index.html"));
 });
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
