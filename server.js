@@ -33,7 +33,7 @@ app.get("/api/notes", function (req, res) {
         if (err) {
             console.log("An error has occured reading your data.")
         }
-    res.json(JSON.parse(data));
+        res.json(JSON.parse(data));
     });
 });
 
@@ -45,7 +45,10 @@ app.post("/api/notes", function (req, res) { // read and parse data from json
         };
         const notesData = [];
         notesData.push(JSON.parse(data));
-        const note = { ...req.body, id: notesData.length};
+        const note = {
+            ... req.body,
+            id: notesData.length
+        };
         notesData.push(note);
 
         fs.writeFile("Develop/db/db.json", JSON.stringify(notesData), "utf-8", (err) => {
@@ -53,33 +56,34 @@ app.post("/api/notes", function (req, res) { // read and parse data from json
                 throw err;
             
 
+
             console.log("Your note has been posted.");
 
             res.json(notesData);
         });
     });
-    // delete note
-    app.delete("/api/notes/:id", function (req, res) {
-        fs.readFile("Develop/db/db.json", "utf-8", (err, data) => {
-            if (err) {
-                console.log("An error has occured reading your data.")
-            };
-            const notesData = JSON.parse(data);
-            const toDelete = notesData.filter((note) => note.id != parseInt(req.params.id));
-            fs.writeFile("Develop/db/db.json", JSON.stringify(toDelete), "utf-8", (err) => {
-                if (err) 
-                    throw err;
-                
+});
+// delete note
+app.delete("/api/notes/:id", function (req, res) {
+    fs.readFile("Develop/db/db.json", "utf-8", (err, data) => {
+        if (err) {
+            console.log("An error has occured reading your data.")
+        };
+        const notesData = JSON.parse(data);
+        const toDelete = notesData.filter((note) => note.id != parseInt(req.params.id));
+        fs.writeFile("Develop/db/db.json", JSON.stringify(toDelete), "utf-8", (err) => {
+            if (err) 
+                throw err;
+            
 
-                console.log("Your note has been deleted.");
 
-            });
-            res.json(toDelete);
+            console.log("Your note has been deleted.");
+
         });
+        res.json(toDelete);
     });
-    });
-    // listen on port
-    app.listen(PORT, (req, res) => {
-        console.log(`Currently running on http://localhost:${PORT}`);
-    });
-
+});
+// listen on port
+app.listen(PORT, (req, res) => {
+    console.log(`Currently running on http://localhost:${PORT}`);
+});
